@@ -12,7 +12,7 @@ dimension and maximum and minimum dimension sizes.
 ############### How to run? ######################
 Refer to script file "run\_InTensLi.sh" to run InTensLi as a whole.<br/>
 The input parameters for executable file "gen\_ttm" and "ttm" are the same. <br/>
-./gen\_ttm (or ./ttm) <br/>
+./gen\_ttm (or ./ttm) 
   * -dim=[Dimension]<br/>
   * -maxdimsize=[maximum dimension size]<br/>
   * -mindimsize=[minimum dimension size]<br/>
@@ -33,9 +33,9 @@ driver-gen.cpp: main file for the first stage.<br/>
 gen_ttm.cpp: generate "ttm.cpp" for a particular input tensor.<br/>
 decide_mc.cpp: 
   1. function decide_component_mode: split tensor dimensions into two parts, modes
-  used in inner matrix multiplication kernel (M_C) and modes used as loops (M_L). <br/>
+  used in inner matrix multiplication kernel (M_C) and modes used as loops (M_L).
   2. function decide_paras: determine "degree" value and threads used in for loops
-  ("omp_nt"), in MM kernel ("mkl_nt").<br/>
+  ("omp_nt"), in MM kernel ("mkl_nt").
 driver-ttm.cpp: main file to the second stage.<br/>
 util.cpp: auxiliary functions.<br/>
 timer.cpp: timing functions.<br/>
