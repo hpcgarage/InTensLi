@@ -1,6 +1,6 @@
 About InTensLi (Input-adaptive and in-place dense tensor-times-matrix multiply)
 
-################# Overview ###################
+## Overview
 To compute a mode-n product: Y=X * U, where X and Y are dense tensors, U is a
 dense matrix. * represents mode-n product.<br/>
 There are two stages: first is to generate ttm code according to input tensor 
@@ -9,7 +9,7 @@ code and test its performance. <br/>
 The tests use random generated dense tensors, users can specify the tensor 
 dimension and maximum and minimum dimension sizes.
 
-############### How to run? ######################
+## How to run?
 Refer to script file "run\_InTensLi.sh" to run InTensLi as a whole.<br/>
 The input parameters for executable file "gen\_ttm" and "ttm" are the same. <br/>
 ./gen\_ttm (or ./ttm) 
@@ -26,20 +26,20 @@ The input parameters for executable file "gen\_ttm" and "ttm" are the same. <br/
   * -MKLNT=[number of threads used in MM kernel]<br/>
     Parameters "degree", "OMPNT", and "MKLNT" can be specified by users,
     although InTensLi itself decides reasonable values for them.<br/>
-
-############## Code structure #####################
-defines.h: use this file to define macros.<br/>
-driver-gen.cpp: main file for the first stage.<br/>
-gen_ttm.cpp: generate "ttm.cpp" for a particular input tensor.<br/>
-decide_mc.cpp: 
+    
+## Code structure 
+* defines.h: use this file to define macros.<br/>
+* driver-gen.cpp: main file for the first stage.<br/>
+* gen_ttm.cpp: generate "ttm.cpp" for a particular input tensor.<br/>
+* decide_mc.cpp: 
   1. function decide_component_mode: split tensor dimensions into two parts, modes
   used in inner matrix multiplication kernel (M_C) and modes used as loops (M_L).
   2. function decide_paras: determine "degree" value and threads used in for loops
   ("omp_nt"), in MM kernel ("mkl_nt").
-driver-ttm.cpp: main file to the second stage.<br/>
-util.cpp: auxiliary functions.<br/>
-timer.cpp: timing functions.<br/>
-hpcdefs.h: used in timer.cpp.<br/>
+* driver-ttm.cpp: main file to the second stage.<br/>
+* util.cpp: auxiliary functions.<br/>
+* timer.cpp: timing functions.<br/>
+* hpcdefs.h: used in timer.cpp.<br/>
 
 
 Note: Code is not pretty now. Welcome any feedback to improve it!<br/>
